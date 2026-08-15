@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AvisBoost — Vos clients passent par Google. Vos avis vous répondent ?</title>
+<meta name="description" content="AvisBoost transforme chaque visite en avis Google pour les commerces de proximité français : QR code, relances automatiques SMS & WhatsApp, réponses IA. Dès 29 €/mois, sans engagement.">
+<meta property="og:title" content="AvisBoost — Vos clients passent par Google. Vos avis vous répondent ?">
+<meta property="og:description" content="Le réflexe avis Google des commerces de proximité français : QR code, relances SMS & WhatsApp, réponses IA. Dès 29 €/mois, sans engagement.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230e7490'/%3E%3Cpath d='M32 12l5.2 11.4 12.3 1.3-9.2 8.3 2.6 12.1L32 39.4l-10.9 5.7 2.6-12.1-9.2-8.3 12.3-1.3z' fill='%23f5efe6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "AvisBoost",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Gestion des avis Google pour les commerces de proximité français : QR code, relances automatiques SMS & WhatsApp, réponses automatiques IA.",
+  "offers": [
+    { "@type": "Offer", "name": "Starter", "price": "29", "priceCurrency": "EUR", "description": "QR code avis, relances automatiques SMS & WhatsApp, tableau de bord" },
+    { "@type": "Offer", "name": "Pro", "price": "49", "priceCurrency": "EUR", "description": "Tout Starter, plus les réponses automatiques IA et 2 emplacements" },
+    { "@type": "Offer", "name": "Setup unique", "price": "149", "priceCurrency": "EUR", "description": "Installation complète et formation" }
+  ]
+}
+</script>
+<style>
+  :root{
+    --lagoon:#0e7490;
+    --lagoon-deep:#0b5a70;
+    --lagoon-ink:#0a3e4d;
+    --lagoon-tint:#e3f1f5;
+    --lagoon-mist:#f2f8fa;
+    --sand:#f5efe6;
+    --sand-deep:#e8dcc9;
+    --sand-line:#e9dfce;
+    --cream:#fbf9f4;
+    --white:#ffffff;
+    --ink:#24404a;
+    --ink-soft:#5c737c;
+    --terra:#cf6a45;
+    --terra-soft:#f7e4da;
+    --gold:#e0a12e;
+    --radius-lg:28px;
+    --radius-md:20px;
+    --radius-sm:14px;
+    --shadow-sm:0 2px 10px rgba(14,116,144,.06);
+    --shadow-md:0 10px 30px rgba(14,116,144,.10);
+    --shadow-lg:0 24px 60px rgba(11,90,112,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--lagoon-ink);letter-spacing:-.02em;line-height:1.15}
+  img{max-width:100%;display:block}
+  a{color:var(--lagoon);text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  section{padding:88px 0}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,249,244,.88);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--sand-line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.25rem;color:var(--lagoon-ink)}
+  .brand .logo{width:38px;height:38px;border-radius:12px;background:var(--lagoon);display:grid;place-items:center;color:var(--sand);font-size:1.15rem;box-shadow:var(--shadow-sm)}
+  .nav-links{display:flex;gap:28px;align-items:center;font-size:.95rem;font-weight:500}
+  .nav-links a{color:var(--ink)}
+  .nav-links a:hover{color:var(--lagoon)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;
+    padding:14px 28px;border-radius:999px;border:2px solid transparent;cursor:pointer;
+    transition:transform .15s ease,box-shadow .15s ease,background .15s ease;
+  }
+  .btn:active{transform:scale(.97)}
+  .btn-lagoon{background:var(--lagoon);color:#fff;box-shadow:0 8px 22px rgba(14,116,144,.28)}
+  .btn-lagoon:hover{background:var(--lagoon-deep);transform:translateY(-2px);box-shadow:0 12px 28px rgba(14,116,144,.34)}
+  .btn-sand{background:var(--sand);color:var(--lagoon-deep);border-color:var(--sand-deep)}
+  .btn-sand:hover{background:var(--sand-deep);transform:translateY(-2px)}
+  .btn-lg{padding:17px 34px;font-size:1.06rem}
+  .btn-sm{padding:10px 20px;font-size:.9rem}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 420px at 12% -10%, rgba(14,116,144,.10), transparent 60%),
+      radial-gradient(800px 460px at 95% 10%, rgba(224,161,46,.10), transparent 55%),
+      linear-gradient(180deg,var(--sand) 0%,var(--cream) 100%);
+    padding:84px 0 96px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--white);border:1px solid var(--sand-deep);border-radius:999px;
+    padding:8px 16px;font-size:.85rem;font-weight:600;color:var(--lagoon-deep);
+    box-shadow:var(--shadow-sm);margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(2.3rem,4.6vw,3.6rem);font-weight:800;margin-bottom:20px}
+  .hero h1 .accent{color:var(--lagoon);position:relative;white-space:nowrap}
+  .hero h1 .accent::after{
+    content:"";position:absolute;left:0;right:0;bottom:6px;height:10px;
+    background:rgba(224,161,46,.28);border-radius:99px;z-index:-1;
+  }
+  .hero-sub{font-size:1.13rem;color:var(--ink-soft);max-width:540px;margin-bottom:34px}
+  .hero-sub strong{color:var(--ink)}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+  .hero-trust{display:flex;gap:22px;flex-wrap:wrap;font-size:.88rem;color:var(--ink-soft);font-weight:500}
+  .hero-trust span{display:inline-flex;align-items:center;gap:7px}
+  .hero-trust .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);display:inline-block}
+
+  .hero-visual{position:relative}
+  .shop-card{
+    background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--sand-line);
+    box-shadow:var(--shadow-lg);padding:26px;position:relative;
+  }
+  .shop-card .shop-svg{width:100%;height:auto;border-radius:var(--radius-md)}
+  .float-qr{
+    position:absolute;right:-14px;bottom:-22px;
+    background:var(--white);border:1px solid var(--sand-line);border-radius:var(--radius-md);
+    box-shadow:var(--shadow-md);padding:12px;display:flex;flex-direction:column;align-items:center;gap:6px;
+    animation:floaty 5s ease-in-out infinite;
+  }
+  .float-qr img{width:88px;height:88px;border-radius:8px}
+  .float-qr .cap{font-size:.66rem;font-weight:600;color:var(--ink-soft);letter-spacing:.04em;text-transform:uppercase}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  .float-star{
+    position:absolute;top:-16px;left:-12px;background:var(--terra);color:#fff;
+    border-radius:999px;padding:9px 15px;font-size:.8rem;font-weight:700;
+    box-shadow:var(--shadow-md);display:flex;align-items:center;gap:6px;
+  }
+
+  /* ---------- Section headers ---------- */
+  .sec-head{max-width:720px;margin:0 auto 54px;text-align:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.8rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--lagoon);
+    background:var(--lagoon-tint);border-radius:999px;padding:8px 16px;margin-bottom:18px;
+  }
+  .sec-head h2{font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:800;margin-bottom:16px}
+  .sec-head p{color:var(--ink-soft);font-size:1.08rem}
+
+  /* ---------- Douleurs ---------- */
+  .pains{background:var(--white)}
+  .pains-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .pain-card{
+    background:var(--cream);border:1px solid var(--sand-line);border-radius:var(--radius-lg);
+    padding:34px 30px;transition:transform .2s ease,box-shadow .2s ease;position:relative;overflow:hidden;
+  }
+  .pain-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .pain-card .num{
+    position:absolute;top:20px;right:24px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;
+    font-size:2.6rem;color:var(--sand-deep);
+  }
+  .pain-emoji{
+    width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-size:1.6rem;
+    margin-bottom:22px;
+  }
+  .pe-1{background:var(--sand)}
+  .pe-2{background:var(--lagoon-tint)}
+  .pe-3{background:var(--terra-soft)}
+  .pain-card h3{font-size:1.22rem;margin-bottom:10px}
+  .pain-card p{color:var(--ink-soft);font-size:.98rem}
+
+  /* ---------- Comparaison US ---------- */
+  .compare{background:var(--sand)}
+  .compare-inner{
+    background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--sand-line);
+    box-shadow:var(--shadow-md);padding:44px;display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;
+  }
+  .compare h2{font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:800;margin-bottom:14px}
+  .compare .lead{color:var(--ink-soft);margin-bottom:22px;max-width:520px}
+  .us-cards{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+  .us-card{
+    background:var(--cream);border:1px dashed var(--sand-deep);border-radius:var(--radius-md);
+    padding:16px 20px;min-width:170px;
+  }
+  .us-card .name{font-size:.82rem;font-weight:600;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em}
+  .us-card .price{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.35rem;color:var(--ink);margin-top:2px}
+  .us-card .flag{font-size:.75rem;color:var(--ink-soft)}
+  .vs-badge{
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.1em;
+    color:var(--lagoon);background:var(--lagoon-tint);border-radius:999px;padding:7px 14px;
+    align-self:center;
+  }
+  .fr-pill{
+    display:inline-flex;align-items:center;gap:8px;background:var(--lagoon);color:#fff;
+    border-radius:999px;padding:10px 20px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;
+    font-size:.98rem;margin-top:14px;
+  }
+
+  /* ---------- Fonctionnement ---------- */
+  .how{background:var(--cream)}
+  .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:step}
+  .how-card{
+    background:var(--white);border:1px solid var(--sand-line);border-radius:var(--radius-lg);
+    padding:38px 30px;position:relative;box-shadow:var(--shadow-sm);
+  }
+  .how-step{
+    width:44px;height:44px;border-radius:14px;background:var(--lagoon);color:#fff;
+    display:grid;place-items:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.15rem;
+    margin-bottom:22px;box-shadow:0 8px 18px rgba(14,116,144,.25);
+  }
+  .how-card h3{font-size:1.2rem;margin-bottom:10px}
+  .how-card p{color:var(--ink-soft);font-size:.97rem}
+  .how-visual{
+    margin-top:22px;border-radius:var(--radius-md);background:var(--lagoon-mist);
+    border:1px solid var(--sand-line);display:grid;place-items:center;padding:18px;min-height:130px;
+  }
+  .how-visual .qr-real{width:112px;height:112px;border-radius:10px;background:#fff;padding:6px;box-shadow:var(--shadow-sm)}
+  .mock-msg{
+    width:100%;text-align:left;font-size:.8rem;background:#fff;border:1px solid var(--sand-line);
+    border-radius:12px;padding:12px 14px;color:var(--ink-soft);box-shadow:var(--shadow-sm);
+  }
+  .mock-msg .msg-head{display:flex;gap:7px;align-items:center;font-weight:600;color:var(--ink);margin-bottom:6px;font-size:.78rem}
+  .mock-msg .msg-head .pill-sms{background:var(--lagoon-tint);color:var(--lagoon-deep);border-radius:6px;padding:1px 7px;font-size:.66rem;font-weight:700;letter-spacing:.05em}
+  .mock-msg .msg-head .pill-wa{background:#e7f6ec;color:#1f7a44;border-radius:6px;padding:1px 7px;font-size:.66rem;font-weight:700;letter-spacing:.05em}
+  .ia-bubble{
+    background:#fff;border:1px solid var(--sand-line);border-radius:14px;padding:13px 15px;
+    font-size:.8rem;color:var(--ink-soft);text-align:left;box-shadow:var(--shadow-sm);width:100%;
+  }
+  .ia-bubble b{color:var(--lagoon-deep)}
+
+  /* ---------- Tarifs ---------- */
+  .pricing{background:linear-gradient(180deg,var(--sand) 0%,var(--cream) 100%)}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+  .price-card{
+    background:var(--white);border:1px solid var(--sand-line);border-radius:var(--radius-lg);
+    padding:38px 32px;display:flex;flex-direction:column;position:relative;box-shadow:var(--shadow-sm);
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .price-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+  .price-card.featured{
+    border:2px solid var(--lagoon);box-shadow:var(--shadow-lg);
+    transform:scale(1.03);
+  }
+  .price-card.featured:hover{transform:scale(1.03) translateY(-5px)}
+  .featured-flag{
+    position:absolute;top:-15px;left:50%;transform:translateX(-50%);
+    background:var(--terra);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;
+    font-size:.78rem;letter-spacing:.05em;border-radius:999px;padding:7px 18px;white-space:nowrap;
+    box-shadow:var(--shadow-sm);
+  }
+  .price-name{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.25rem;color:var(--lagoon-ink);margin-bottom:4px}
+  .price-for{font-size:.88rem;color:var(--ink-soft);margin-bottom:20px}
+  .price-amount{display:flex;align-items:baseline;gap:6px;margin-bottom:22px}
+  .price-amount .eur{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:2.9rem;color:var(--ink);letter-spacing:-.03em}
+  .price-amount .per{font-size:.92rem;color:var(--ink-soft);font-weight:500}
+  .price-amount .one{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:2.2rem;color:var(--ink)}
+  .price-feats{list-style:none;margin-bottom:30px;flex:1}
+  .price-feats li{
+    display:flex;gap:10px;align-items:flex-start;font-size:.95rem;color:var(--ink);
+    padding:7px 0;
+  }
+  .price-feats li::before{content:"✓";color:var(--lagoon);font-weight:800;flex-shrink:0}
+  .price-feats li.no{color:var(--ink-soft)}
+  .price-feats li.no::before{content:"—";color:var(--sand-deep)}
+  .price-note{text-align:center;color:var(--ink-soft);font-size:.9rem;margin-top:34px}
+  .price-note strong{color:var(--ink)}
+
+  /* ---------- Pour qui ---------- */
+  .who{background:var(--white)}
+  .who-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .who-card{
+    background:var(--cream);border:1px solid var(--sand-line);border-radius:var(--radius-lg);
+    padding:26px;text-align:center;transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .who-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .who-card .shop-svg{width:100%;height:auto;border-radius:var(--radius-sm);margin-bottom:16px}
+  .who-emoji{
+    display:inline-grid;place-items:center;width:44px;height:44px;border-radius:14px;
+    background:var(--white);border:1px solid var(--sand-deep);font-size:1.25rem;margin-bottom:12px;
+    box-shadow:var(--shadow-sm);
+  }
+  .who-card h3{font-size:1.08rem;margin-bottom:8px}
+  .who-card p{font-size:.9rem;color:var(--ink-soft)}
+
+  /* ---------- Démo teaser ---------- */
+  .demo-teaser{background:var(--lagoon-ink);position:relative;overflow:hidden}
+  .demo-teaser::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(700px 300px at 85% 0%,rgba(14,116,144,.55),transparent 60%);
+  }
+  .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;position:relative}
+  .demo-teaser h2{color:var(--sand);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;margin-bottom:16px}
+  .demo-teaser p{color:rgba(245,239,230,.82);font-size:1.05rem;margin-bottom:28px;max-width:480px}
+  .demo-teaser .btn-lagoon{background:var(--sand);color:var(--lagoon-ink)}
+  .demo-teaser .btn-lagoon:hover{background:#fff}
+  .demo-window{
+    background:var(--cream);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-lg);
+  }
+  .demo-window .bar{display:flex;gap:7px;margin-bottom:16px}
+  .demo-window .bar i{width:11px;height:11px;border-radius:50%;display:block}
+  .demo-window .bar i:nth-child(1){background:var(--terra)}
+  .demo-window .bar i:nth-child(2){background:var(--gold)}
+  .demo-window .bar i:nth-child(3){background:#7fb58c}
+  .demo-row{
+    display:flex;align-items:center;gap:14px;background:var(--white);border:1px solid var(--sand-line);
+    border-radius:var(--radius-md);padding:13px 16px;margin-bottom:11px;
+  }
+  .demo-row .mini-qr{width:52px;height:52px;border-radius:8px;background:#fff;border:1px solid var(--sand-line);padding:3px}
+  .demo-row .who2{font-weight:600;font-size:.92rem;color:var(--ink)}
+  .demo-row .since{font-size:.8rem;color:var(--ink-soft)}
+  .demo-row .stat{
+    margin-left:auto;font-size:.72rem;font-weight:700;border-radius:999px;padding:5px 11px;
+    background:var(--lagoon-tint);color:var(--lagoon-deep);white-space:nowrap;
+  }
+
+  /* ---------- Formulaire ---------- */
+  .form-sec{background:var(--sand)}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+  .form-side h2{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;margin-bottom:16px}
+  .form-side>p{color:var(--ink-soft);font-size:1.05rem;margin-bottom:26px;max-width:440px}
+  .form-side ul{list-style:none}
+  .form-side li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;color:var(--ink);font-size:.98rem}
+  .form-side li::before{content:"✓";color:var(--lagoon);font-weight:800}
+  .trial-card{
+    background:var(--white);border:1px solid var(--sand-line);border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-lg);padding:38px;
+  }
+  .field{margin-bottom:18px}
+  .field label{display:block;font-weight:600;font-size:.92rem;margin-bottom:7px;color:var(--ink)}
+  .field label .req{color:var(--terra)}
+  .field input,.field select,.field textarea{
+    width:100%;font:inherit;font-size:.97rem;color:var(--ink);
+    background:var(--cream);border:1.5px solid var(--sand-deep);border-radius:var(--radius-sm);
+    padding:13px 15px;transition:border-color .15s ease,box-shadow .15s ease;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-color:var(--lagoon);box-shadow:0 0 0 4px rgba(14,116,144,.13);background:#fff;
+  }
+  .field textarea{resize:vertical;min-height:92px}
+  .offer-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .offer-opt{position:relative}
+  .offer-opt input{position:absolute;opacity:0;pointer-events:none}
+  .offer-opt label{
+    display:block;border:1.5px solid var(--sand-deep);border-radius:var(--radius-sm);
+    padding:11px 13px;cursor:pointer;font-size:.88rem;font-weight:600;color:var(--ink);
+    transition:all .15s ease;background:var(--cream);
+  }
+  .offer-opt label .off-price{display:block;font-size:.76rem;color:var(--ink-soft);font-weight:500}
+  .offer-opt input:checked+label{border-color:var(--lagoon);background:var(--lagoon-tint);color:var(--lagoon-deep)}
+  .offer-opt input:focus-visible+label{box-shadow:0 0 0 4px rgba(14,116,144,.13)}
+  .rgpd{display:flex;gap:11px;align-items:flex-start;font-size:.85rem;color:var(--ink-soft);margin-bottom:18px}
+  .rgpd input{width:18px;height:18px;margin-top:2px;accent-color:var(--lagoon);flex-shrink:0}
+  .rgpd a{text-decoration:underline}
+  .btn-submit{width:100%;font-size:1.05rem}
+  .form-foot{text-align:center;font-size:.82rem;color:var(--ink-soft);margin-top:14px}
+  .form-err{
+    display:none;background:#fdecec;color:#a23b3b;border:1px solid #f3c9c9;
+    border-radius:var(--radius-sm);padding:12px 15px;font-size:.9rem;margin-bottom:16px;
+  }
+  .form-err.show{display:block}
+  .form-ok{
+    display:none;text-align:center;padding:14px 6px;
+  }
+  .form-ok.show{display:block}
+  .form-ok .ok-icon{
+    width:66px;height:66px;border-radius:50%;background:var(--lagoon-tint);color:var(--lagoon-deep);
+    display:grid;place-items:center;font-size:1.9rem;margin:0 auto 16px;
+  }
+  .form-ok h3{font-size:1.4rem;margin-bottom:10px}
+  .form-ok p{color:var(--ink-soft);font-size:.98rem;max-width:420px;margin:0 auto 6px}
+  .form-ok .next{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--lagoon);font-size:.95rem;margin-top:10px}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--white)}
+  .faq-list{max-width:780px;margin:0 auto}
+  .faq-item{
+    border:1px solid var(--sand-line);border-radius:var(--radius-md);background:var(--cream);
+    margin-bottom:14px;overflow:hidden;
+  }
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.03rem;color:var(--ink);
+    padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  .faq-q .chev{transition:transform .25s ease;color:var(--lagoon);font-size:1.05rem;flex-shrink:0}
+  .faq-item.open .chev{transform:rotate(180deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .faq-a-inner{padding:0 24px 22px;color:var(--ink-soft);font-size:.97rem}
+  .faq-a-inner a{font-weight:600;text-decoration:underline}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--lagoon-ink);color:rgba(245,239,230,.78);padding:60px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px}
+  .foot-brand .brand{color:var(--sand);margin-bottom:12px}
+  .foot-brand .logo{background:var(--lagoon)}
+  .foot-brand p{font-size:.92rem;max-width:320px}
+  .foot-col h4{color:var(--sand);font-family:'Plus Jakarta Sans',sans-serif;font-size:.92rem;margin-bottom:14px;letter-spacing:.04em}
+  .foot-col a{display:block;color:rgba(245,239,230,.78);font-size:.92rem;padding:4px 0}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{
+    border-top:1px solid rgba(245,239,230,.14);padding-top:24px;
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.82rem;
+  }
+  .foot-bottom .fr{font-size:.9rem}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:960px){
+    .hero-grid,.form-grid,.demo-grid{grid-template-columns:1fr}
+    .pains-grid,.how-grid,.price-grid{grid-template-columns:1fr}
+    .price-card.featured{transform:none}
+    .price-card.featured:hover{transform:translateY(-5px)}
+    .who-grid{grid-template-columns:1fr 1fr}
+    .compare-inner{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .foot-grid{grid-template-columns:1fr}
+    .float-qr{right:8px}
+  }
+  @media (max-width:560px){
+    .who-grid{grid-template-columns:1fr}
+    section{padding:64px 0}
+    .offer-row{grid-template-columns:1fr}
+    .hero-cta .btn{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="AvisBoost — accueil">
+      <span class="logo" aria-hidden="true">★</span> AvisBoost
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#probleme">Le problème</a>
+      <a href="#fonctionnement">Fonctionnement</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#pour-qui">Pour qui</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-lagoon btn-sm" href="#essai">Essai gratuit</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="hero-badge">🇫🇷 Conçu pour les commerces de proximité français</span>
+      <h1>Vos clients passent par Google.<br>Vos avis <span class="accent">vous répondent&nbsp;?</span></h1>
+      <p class="hero-sub">AvisBoost transforme chaque visite en avis Google : un <strong>QR code</strong> posé en caisse ou sur la table, des <strong>relances automatiques</strong> par SMS et WhatsApp, des <strong>réponses IA</strong> rédigées dans le ton de votre commerce. <strong>Dès 29&nbsp;€/mois</strong>, sans engagement.</p>
+      <div class="hero-cta">
+        <a class="btn btn-lagoon btn-lg" href="#essai">Essayer gratuitement</a>
+        <a class="btn btn-sand btn-lg" href="app-demo.html">Voir la démo interactive →</a>
+      </div>
+      <div class="hero-trust">
+        <span><i class="dot"></i>Mise en service en 48&nbsp;h</span>
+        <span><i class="dot"></i>Sans engagement</span>
+        <span><i class="dot"></i>Aide à l'installation incluse</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="shop-card">
+        <svg class="shop-svg" viewBox="0 0 560 400" role="img" aria-label="Illustration de la devanture d'un commerce de proximité avec son QR code AvisBoost">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e3f1f5"/><stop offset="1" stop-color="#f5efe6"/>
+            </linearGradient>
+            <linearGradient id="awning" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#0e7490"/><stop offset="1" stop-color="#0b5a70"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="560" height="400" rx="20" fill="url(#sky)"/>
+          <!-- trottoir -->
+          <rect x="0" y="330" width="560" height="70" fill="#efe6d6"/>
+          <line x1="0" y1="330" x2="560" y2="330" stroke="#e2d5bf" stroke-width="3"/>
+          <!-- façade -->
+          <rect x="70" y="70" width="420" height="260" rx="10" fill="#fbf9f4" stroke="#e9dfce" stroke-width="3"/>
+          <!-- bandeau enseigne -->
+          <rect x="100" y="92" width="360" height="64" rx="12" fill="#0a3e4d"/>
+          <text x="280" y="132" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="30" fill="#f5efe6">★ AvisBoost</text>
+          <!-- stores -->
+          <g>
+            <rect x="70" y="176" width="420" height="26" fill="url(#awning)"/>
+            <g fill="#0e7490">
+              <circle cx="70" cy="202" r="13"/><circle cx="122" cy="202" r="13"/><circle cx="174" cy="202" r="13"/>
+              <circle cx="226" cy="202" r="13"/><circle cx="278" cy="202" r="13"/><circle cx="330" cy="202" r="13"/>
+              <circle cx="382" cy="202" r="13"/><circle cx="434" cy="202" r="13"/><circle cx="490" cy="202" r="13"/>
+            </g>
+            <g fill="#f5efe6">
+              <circle cx="96" cy="202" r="13"/><circle cx="148" cy="202" r="13"/><circle cx="200" cy="202" r="13"/>
+              <circle cx="252" cy="202" r="13"/><circle cx="304" cy="202" r="13"/><circle cx="356" cy="202" r="13"/>
+              <circle cx="408" cy="202" r="13"/><circle cx="462" cy="202" r="13"/>
+            </g>
+          </g>
+          <!-- vitrine -->
+          <rect x="100" y="228" width="150" height="92" rx="8" fill="#e3f1f5" stroke="#e9dfce" stroke-width="3"/>
+          <rect x="110" y="238" width="60" height="72" rx="4" fill="#ffffff" opacity=".75"/>
+          <rect x="180" y="238" width="60" height="72" rx="4" fill="#ffffff" opacity=".75"/>
+          <line x1="175" y1="238" x2="175" y2="310" stroke="#e9dfce" stroke-width="3"/>
+          <!-- affiche avis dans la vitrine -->
+          <rect x="196" y="252" width="30" height="30" rx="6" fill="#f5efe6" stroke="#e8dcc9" stroke-width="2"/>
+          <text x="211" y="272" text-anchor="middle" font-size="14" fill="#e0a12e">★★★★★</text>
+          <!-- porte -->
+          <rect x="300" y="238" width="150" height="92" rx="8" fill="#0a3e4d"/>
+          <rect x="312" y="250" width="126" height="80" rx="6" fill="#ffffff"/>
+          <rect x="322" y="258" width="52" height="66" rx="4" fill="#b9dce6"/>
+          <rect x="384" y="258" width="52" height="66" rx="4" fill="#b9dce6"/>
+          <line x1="378" y1="258" x2="378" y2="324" stroke="#0a3e4d" stroke-width="3"/>
+          <circle cx="428" cy="292" r="4" fill="#e0a12e"/>
+          <!-- plantes -->
+          <g>
+            <rect x="80" y="300" width="22" height="26" rx="6" fill="#cf6a45"/>
+            <circle cx="91" cy="288" r="16" fill="#7fb58c"/>
+            <circle cx="80" cy="280" r="11" fill="#92c29d"/>
+            <rect x="458" y="300" width="22" height="26" rx="6" fill="#cf6a45"/>
+            <circle cx="469" cy="288" r="16" fill="#7fb58c"/>
+            <circle cx="480" cy="280" r="11" fill="#92c29d"/>
+          </g>
+          <!-- paillasson -->
+          <rect x="340" y="318" width="90" height="10" rx="5" fill="#e8dcc9"/>
+        </svg>
+        <div class="float-star">⭐ Nouvel avis reçu&nbsp;!</div>
+      </div>
+      <div class="float-qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dvotre%2Bcommerce%2Bavis" alt="QR code d'exemple AvisBoost pointant vers la page Google du commerce" width="88" height="88" loading="lazy">
+        <span class="cap">Scannez → avis Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOULEURS ============ -->
+<section class="pains" id="probleme">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">😟 Le constat</span>
+      <h2>3 raisons pour lesquelles votre fiche Google ne décroche pas</h2>
+      <p>Vous faites un travail remarquable. Mais sur Google, ce sont les avis qui parlent pour vous — et les vôtres restent silencieux.</p>
+    </div>
+    <div class="pains-grid">
+      <article class="pain-card">
+        <span class="num">01</span>
+        <div class="pain-emoji pe-1">📅</div>
+        <h3>Des avis datés</h3>
+        <p>Votre dernier avis remonte à des mois, voire des années. Or vos futurs clients consultent les avis récents : des avis vieux, c'est un commerce qui ne vit plus. Même si vous travaillez plus que jamais.</p>
+      </article>
+      <article class="pain-card">
+        <span class="num">02</span>
+        <div class="pain-emoji pe-2">😶</div>
+        <h3>Des clients qui oublient</h3>
+        <p>Vos clients repartent contents, vous le savez. Puis la vie reprend, et l'avis ne se fait jamais. Sans relance au bon moment, chaque visite satisfaite est un avis perdu.</p>
+      </article>
+      <article class="pain-card">
+        <span class="num">03</span>
+        <div class="pain-emoji pe-3">🔇</div>
+        <h3>Des réponses absentes</h3>
+        <p>Un avis arrive enfin… et personne ne répond. Une conversation laissée en plan se voit, et les visiteurs la remarquent. Répondre à chaque avis, c'est un métier à temps plein que vous n'avez pas le temps de faire.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARAISON US ============ -->
+<section class="compare" id="comparaison">
+  <div class="wrap">
+    <div class="compare-inner">
+      <div>
+        <h2>Les solutions américaines&nbsp;? Puissantes… et hors de prix.</h2>
+        <p class="lead">Birdeye, Podium&nbsp;: des outils redoutables, facturés en dollars, conçus pour les chaînes américaines — et sans accompagnement pour le commerce de quartier français.</p>
+        <div class="us-cards">
+          <div class="us-card">
+            <div class="name">Birdeye</div>
+            <div class="price">299&nbsp;$<span style="font-size:.85rem;font-weight:500;color:var(--ink-soft)">/mois</span></div>
+            <div class="flag">🇺🇸 Pensé pour les US</div>
+          </div>
+          <div class="us-card">
+            <div class="name">Podium</div>
+            <div class="price">399&nbsp;$<span style="font-size:.85rem;font-weight:500;color:var(--ink-soft)">/mois</span></div>
+            <div class="flag">🇺🇸 En anglais uniquement</div>
+          </div>
+          <span class="vs-badge">VS</span>
+        </div>
+        <div class="fr-pill">🇫🇷 AvisBoost — dès 29&nbsp;€/mois, en français</div>
+      </div>
+      <div style="text-align:center">
+        <svg width="170" height="170" viewBox="0 0 170 170" role="img" aria-label="Carte de France stylisée avec un cœur">
+          <circle cx="85" cy="85" r="82" fill="#e3f1f5"/>
+          <circle cx="85" cy="85" r="70" fill="#fbf9f4" stroke="#e9dfce" stroke-width="2"/>
+          <text x="85" y="92" text-anchor="middle" font-size="34">🇫🇷</text>
+          <text x="85" y="126" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="15" fill="#0e7490">FAIT POUR LA FRANCE</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FONCTIONNEMENT ============ -->
+<section class="how" id="fonctionnement">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">⚙️ Comment ça marche</span>
+      <h2>Trois gestes, et vos avis repartent</h2>
+      <p>De la visite au nouvel avis Google, tout est automatisé. Vous, vous tenez votre commerce. AvisBoost s'occupe du reste.</p>
+    </div>
+    <div class="how-grid">
+      <article class="how-card">
+        <div class="how-step">1</div>
+        <h3>Le QR code</h3>
+        <p>Votre QR code personnalisé, imprimé en caisse, sur la table ou en vitrine. Un scan suffit : vos clients arrivent directement sur votre page d'avis Google. Zéro friction, zéro explication.</p>
+        <div class="how-visual">
+          <img class="qr-real" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dvotre%2Bcommerce%2Bavis" alt="QR code AvisBoost prêt à imprimer" width="112" height="112" loading="lazy">
+        </div>
+      </article>
+      <article class="how-card">
+        <div class="how-step">2</div>
+        <h3>La relance automatique</h3>
+        <p>Quelques jours après la visite, votre client reçoit un SMS ou un WhatsApp personnalisé avec son prénom et le nom de votre commerce. Un lien, un clic, un avis.</p>
+        <div class="how-visual">
+          <div class="mock-msg">
+            <div class="msg-head"><span>💬</span> Relance envoyée <span class="pill-sms">SMS</span><span class="pill-wa">WhatsApp</span></div>
+            « Bonjour Camille, merci pour votre visite chez Le Bistrot du Port ! Un petit avis Google nous aiderait énormément : lien en un clic 🙏 »
+          </div>
+        </div>
+      </article>
+      <article class="how-card">
+        <div class="how-step">3</div>
+        <h3>La réponse IA</h3>
+        <p>Chaque avis reçoit une réponse chaleureuse et personnalisée, dans le ton de votre commerce. Vous validez en un clic, ou vous laissez l'IA répondre seule.</p>
+        <div class="how-visual">
+          <div class="ia-bubble">
+            <b>✦ Réponse IA proposée</b><br>
+            « Merci infiniment pour ces 5 étoiles, Claire ! Toute l'équipe est ravie que le risotto vous ait plu. Au plaisir de vous revoir très vite 🍋 »
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TARIFS ============ -->
+<section class="pricing" id="tarifs">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">💶 Des prix de proximité</span>
+      <h2>Une offre simple, sans mauvaise surprise</h2>
+      <p>Prix en euros, sans engagement. Choisissez votre formule, on s'occupe du reste.</p>
+    </div>
+    <div class="price-grid">
+      <article class="price-card">
+        <div class="price-name">Starter</div>
+        <div class="price-for">Pour lancer vos avis</div>
+        <div class="price-amount"><span class="eur">29&nbsp;€</span><span class="per">/mois</span></div>
+        <ul class="price-feats">
+          <li>QR code personnalisé à imprimer</li>
+          <li>Relances automatiques SMS &amp; WhatsApp</li>
+          <li>Tableau de bord de vos avis</li>
+          <li>1 emplacement (1 adresse)</li>
+          <li>Support par email</li>
+        </ul>
+        <a class="btn btn-sand" href="#essai" data-offre="Starter — 29 €/mois">Commencer l'essai</a>
+      </article>
+      <article class="price-card featured">
+        <span class="featured-flag">⭐ Le plus choisi</span>
+        <div class="price-name">Pro</div>
+        <div class="price-for">Pour faire décoller votre réputation</div>
+        <div class="price-amount"><span class="eur">49&nbsp;€</span><span class="per">/mois</span></div>
+        <ul class="price-feats">
+          <li>Tout le Starter</li>
+          <li>Réponses automatiques IA aux avis</li>
+          <li>2 emplacements (2 adresses)</li>
+          <li>Statistiques d'évolution de votre note</li>
+          <li>Support prioritaire</li>
+        </ul>
+        <a class="btn btn-lagoon" href="#essai" data-offre="Pro — 49 €/mois">Commencer l'essai</a>
+      </article>
+      <article class="price-card">
+        <div class="price-name">Setup unique</div>
+        <div class="price-for">Installation clé en main + formation</div>
+        <div class="price-amount"><span class="one">149&nbsp;€</span><span class="per">une fois</span></div>
+        <ul class="price-feats">
+          <li>Mise en service complète (QR, relances, IA)</li>
+          <li>Connexion Google &amp; canal SMS/WhatsApp configurés</li>
+          <li>Formation 1&nbsp;h en visio avec vous</li>
+          <li>Guide personnalisé de votre commerce</li>
+          <li>Accompagnement les 30 premiers jours</li>
+        </ul>
+        <a class="btn btn-sand" href="#essai" data-offre="Setup unique — 149 €">Réserver le setup</a>
+      </article>
+    </div>
+    <p class="price-note">💳 Paiement par virement ou carte · <strong>Résiliable à tout moment</strong> · L'essai gratuit de 14 jours est sans carte bancaire.</p>
+  </div>
+</section>
+
+<!-- ============ POUR QUI ============ -->
+<section class="who" id="pour-qui">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">🏪 Pour qui</span>
+      <h2>Pensé pour les commerces de quartier</h2>
+      <p>Votre métier n'est pas de courir après les avis. Le nôtre, si.</p>
+    </div>
+    <div class="who-grid">
+      <article class="who-card">
+        <svg class="shop-svg" viewBox="0 0 220 130" role="img" aria-label="Devanture de restaurant">
+          <rect width="220" height="130" rx="12" fill="#f5efe6"/>
+          <rect x="16" y="34" width="188" height="12" fill="#0e7490"/>
+          <g fill="#0e7490"><circle cx="16" cy="46" r="6"/><circle cx="42" cy="46" r="6"/><circle cx="68" cy="46" r="6"/><circle cx="94" cy="46" r="6"/><circle cx="120" cy="46" r="6"/><circle cx="146" cy="46" r="6"/><circle cx="172" cy="46" r="6"/><circle cx="198" cy="46" r="6"/></g>
+          <g fill="#f5efe6"><circle cx="29" cy="46" r="6"/><circle cx="55" cy="46" r="6"/><circle cx="81" cy="46" r="6"/><circle cx="107" cy="46" r="6"/><circle cx="133" cy="46" r="6"/><circle cx="159" cy="46" r="6"/><circle cx="185" cy="46" r="6"/></g>
+          <rect x="16" y="22" width="70" height="16" rx="5" fill="#0a3e4d"/>
+          <rect x="30" y="58" width="76" height="58" rx="6" fill="#e3f1f5" stroke="#e8dcc9" stroke-width="2"/>
+          <rect x="114" y="58" width="90" height="58" rx="6" fill="#0a3e4d"/>
+          <rect x="124" y="66" width="70" height="42" rx="4" fill="#ffffff"/>
+          <circle cx="188" cy="88" r="4" fill="#e0a12e"/>
+        </svg>
+        <span class="who-emoji" aria-hidden="true">🍽️</span>
+        <h3>Restaurants &amp; bars</h3>
+        <p>Le QR code sur la table, la relance après le service : l'avis arrive pendant que l'envie d'en parler est encore là.</p>
+      </article>
+      <article class="who-card">
+        <svg class="shop-svg" viewBox="0 0 220 130" role="img" aria-label="Devanture de salon de coiffure">
+          <rect width="220" height="130" rx="12" fill="#f5efe6"/>
+          <rect x="16" y="34" width="188" height="12" fill="#cf6a45"/>
+          <g fill="#cf6a45"><circle cx="16" cy="46" r="6"/><circle cx="42" cy="46" r="6"/><circle cx="68" cy="46" r="6"/><circle cx="94" cy="46" r="6"/><circle cx="120" cy="46" r="6"/><circle cx="146" cy="46" r="6"/><circle cx="172" cy="46" r="6"/><circle cx="198" cy="46" r="6"/></g>
+          <g fill="#f5efe6"><circle cx="29" cy="46" r="6"/><circle cx="55" cy="46" r="6"/><circle cx="81" cy="46" r="6"/><circle cx="107" cy="46" r="6"/><circle cx="133" cy="46" r="6"/><circle cx="159" cy="46" r="6"/><circle cx="185" cy="46" r="6"/></g>
+          <rect x="16" y="22" width="84" height="16" rx="5" fill="#0a3e4d"/>
+          <rect x="30" y="58" width="76" height="58" rx="6" fill="#e3f1f5" stroke="#e8dcc9" stroke-width="2"/>
+          <rect x="114" y="58" width="90" height="58" rx="6" fill="#fbf9f4" stroke="#e8dcc9" stroke-width="2"/>
+          <circle cx="159" cy="84" r="12" fill="#f5efe6" stroke="#0a3e4d" stroke-width="2"/>
+          <path d="M150 76 L168 92 M168 76 L150 92" stroke="#0a3e4d" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <span class="who-emoji" aria-hidden="true">✂️</span>
+        <h3>Coiffeurs &amp; salons</h3>
+        <p>Le rendez-vous est votre plus beau moment : transformez chaque passage en preuve sociale qui attire le prochain client.</p>
+      </article>
+      <article class="who-card">
+        <svg class="shop-svg" viewBox="0 0 220 130" role="img" aria-label="Devanture de garage">
+          <rect width="220" height="130" rx="12" fill="#f5efe6"/>
+          <rect x="16" y="22" width="120" height="16" rx="5" fill="#0a3e4d"/>
+          <rect x="16" y="38" width="188" height="10" fill="#e8dcc9"/>
+          <rect x="16" y="48" width="188" height="68" rx="6" fill="#e3f1f5" stroke="#e8dcc9" stroke-width="2"/>
+          <rect x="44" y="56" width="76" height="52" rx="3" fill="#ffffff" stroke="#b9dce6" stroke-width="2"/>
+          <rect x="128" y="56" width="48" height="52" rx="3" fill="#ffffff" stroke="#b9dce6" stroke-width="2"/>
+          <rect x="176" y="60" width="22" height="26" rx="4" fill="#cf6a45"/>
+          <circle cx="70" cy="118" r="7" fill="#0a3e4d"/><circle cx="150" cy="118" r="7" fill="#0a3e4d"/>
+        </svg>
+        <span class="who-emoji" aria-hidden="true">🔧</span>
+        <h3>Garages &amp; auto</h3>
+        <p>La confiance se joue sur Google avant même l'entrée dans l'atelier. Faites-la parler après chaque intervention.</p>
+      </article>
+      <article class="who-card">
+        <svg class="shop-svg" viewBox="0 0 220 130" role="img" aria-label="Devanture d'atelier d'artisan">
+          <rect width="220" height="130" rx="12" fill="#f5efe6"/>
+          <path d="M16 56 L110 24 L204 56 Z" fill="#cf6a45"/>
+          <rect x="16" y="56" width="188" height="60" rx="6" fill="#fbf9f4" stroke="#e8dcc9" stroke-width="2"/>
+          <rect x="40" y="66" width="66" height="42" rx="5" fill="#e3f1f5" stroke="#e8dcc9" stroke-width="2"/>
+          <rect x="122" y="66" width="58" height="42" rx="5" fill="#0a3e4d"/>
+          <rect x="130" y="74" width="42" height="26" rx="3" fill="#ffffff"/>
+          <circle cx="166" cy="88" r="3.5" fill="#e0a12e"/>
+        </svg>
+        <span class="who-emoji" aria-hidden="true">🛠️</span>
+        <h3>Artisans &amp; pros</h3>
+        <p>Chantier terminé, client satisfait : une relance propre et votre réputation se construit chantier après chantier.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DÉMO TEASER ============ -->
+<section class="demo-teaser" id="demo">
+  <div class="wrap demo-grid">
+    <div>
+      <span class="eyebrow" style="background:rgba(245,239,230,.12);color:var(--sand)">🧪 Démo interactive</span>
+      <h2>Voyez AvisBoost en action</h2>
+      <p>Créez le QR code de votre commerce, personnalisez vos messages de relance SMS et WhatsApp, suivez vos clients — le tout dans une démo réelle qui tourne dans votre navigateur.</p>
+      <a class="btn btn-lagoon btn-lg" href="app-demo.html">Ouvrir la démo →</a>
+    </div>
+    <div class="demo-window" aria-hidden="true">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <div class="demo-row">
+        <img class="mini-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dle%2Bbistrot%2Bdu%2Bport" alt="">
+        <div><div class="who2">Le Bistrot du Port</div><div class="since">QR code prêt à imprimer</div></div>
+        <span class="stat">QR actif ✓</span>
+      </div>
+      <div class="demo-row">
+        <div style="width:52px;height:52px;border-radius:8px;background:var(--lagoon-tint);display:grid;place-items:center;font-size:1.3rem">💬</div>
+        <div><div class="who2">Camille — visite il y a 3 jours</div><div class="since">Relance SMS envoyée</div></div>
+        <span class="stat">En attente</span>
+      </div>
+      <div class="demo-row" style="margin-bottom:0">
+        <div style="width:52px;height:52px;border-radius:8px;background:var(--terra-soft);display:grid;place-items:center;font-size:1.3rem">⭐</div>
+        <div><div class="who2">Hugo — visite il y a 8 jours</div><div class="since">Avis Google reçu</div></div>
+        <span class="stat">Répondu ✓</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMULAIRE ============ -->
+<section class="form-sec" id="essai">
+  <div class="wrap form-grid">
+    <div class="form-side">
+      <span class="eyebrow">🎁 Essai gratuit</span>
+      <h2>Essayez AvisBoost 14 jours, gratuitement</h2>
+      <p>Laissez-nous vos coordonnées : on vous rappelle sous 24&nbsp;h ouvrées pour configurer votre essai. Aucune carte bancaire, aucun engagement.</p>
+      <ul>
+        <li>Essai complet : QR code, relances, réponses IA</li>
+        <li>Votre fiche Google analysée avant même l'essai</li>
+        <li>Un humain français, pas un robot de support</li>
+      </ul>
+    </div>
+    <div class="trial-card">
+      <form id="trial-form" novalidate>
+        <div class="form-err" id="form-err" role="alert"></div>
+        <div class="field">
+          <label for="f-name">Votre nom <span class="req">*</span></label>
+          <input type="text" id="f-name" name="name" autocomplete="name" placeholder="Marie Dupont" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Votre email <span class="req">*</span></label>
+          <input type="email" id="f-email" name="email" autocomplete="email" placeholder="marie@moncommerce.fr" required>
+        </div>
+        <div class="field">
+          <label for="f-type">Type de commerce</label>
+          <select id="f-type" name="type">
+            <option value="Restaurant / bar / café">Restaurant / bar / café</option>
+            <option value="Coiffure / beauté / bien-être">Coiffure / beauté / bien-être</option>
+            <option value="Garage / auto / moto">Garage / auto / moto</option>
+            <option value="Artisanat / BTP">Artisanat / BTP</option>
+            <option value="Autre commerce de proximité">Autre commerce de proximité</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Quelle formule vous intéresse&nbsp;?</label>
+          <div class="offer-row" id="offer-row">
+            <div class="offer-opt">
+              <input type="radio" name="offre" id="off-starter" value="Starter — 29 €/mois">
+              <label for="off-starter">Starter<span class="off-price">29 €/mois</span></label>
+            </div>
+            <div class="offer-opt">
+              <input type="radio" name="offre" id="off-pro" value="Pro — 49 €/mois">
+              <label for="off-pro">Pro ⭐<span class="off-price">49 €/mois</span></label>
+            </div>
+            <div class="offer-opt">
+              <input type="radio" name="offre" id="off-setup" value="Setup unique — 149 €">
+              <label for="off-setup">Setup unique<span class="off-price">149 € une fois</span></label>
+            </div>
+            <div class="offer-opt">
+              <input type="radio" name="offre" id="off-unsure" value="Je ne sais pas encore">
+              <label for="off-unsure">Je ne sais pas<span class="off-price">Conseillez-moi</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-msg">Un mot sur votre commerce (facultatif)</label>
+          <textarea id="f-msg" name="message" placeholder="Ex. : restaurant à Bordeaux, 4 ans d'activité, une dizaine d'avis…"></textarea>
+        </div>
+        <label class="rgpd">
+          <input type="checkbox" id="f-consent" required>
+          <span>J'accepte d'être recontacté(e) par AvisBoost au sujet de mon essai gratuit. Vos données ne sont jamais revendues. <a href="#faq">En savoir plus</a>.</span>
+        </label>
+        <button type="submit" class="btn btn-lagoon btn-lg btn-submit" id="btn-submit">Réserver mon essai gratuit</button>
+        <p class="form-foot">🔒 Confirmation par email — sans engagement, sans carte bancaire.</p>
+      </form>
+      <div class="form-ok" id="form-ok" aria-live="polite">
+        <div class="ok-icon">✅</div>
+        <h3>Demande envoyée&nbsp;!</h3>
+        <p>Merci pour votre confiance. Vous recevez un email de confirmation dans quelques instants, et nous revenons vers vous sous 24&nbsp;h ouvrées.</p>
+        <span class="next">À très vite côté Google&nbsp;→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">❓ FAQ</span>
+      <h2>Les questions qu'on nous pose</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">En combien de temps mon commerce est-il opérationnel&nbsp;?<span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Comptez <strong>48&nbsp;h en moyenne</strong> pour recevoir votre QR code et lancer vos premières relances. Le setup complet, avec la connexion Google et le canal SMS/WhatsApp, est livré en moins d'une semaine.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Faut-il des compétences techniques&nbsp;?<span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Non. L'installation est prise en charge, et l'essai gratuit inclut l'aide à la mise en route. Le QR code s'imprime comme une image classique, les relances partent toutes seules.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Et si je reçois un avis négatif&nbsp;?<span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">L'IA vous propose une réponse constructive, que vous validez avant envoi. Un avis négatif traité avec soin et rapidité rassure souvent plus qu'il ne nuit : les visiteurs voient que vous prenez les retours au sérieux.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Les SMS ont-ils un coût caché&nbsp;?<span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Non. Les relances SMS sont incluses dans votre abonnement, avec une enveloppe mensuelle adaptée au volume de votre commerce. WhatsApp est sans coût additionnel.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Quand l'envoi de SMS et la connexion Google sont-ils réellement activés&nbsp;?<span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Lors de votre mise en service, nous connectons votre fiche Google Business Profile et votre canal d'envoi (numéro dédié ou WhatsApp Business). Le branchement est documenté pas à pas, et l'offre Setup le prend en charge de A à Z. Jusqu'à cette activation, votre QR code et vos relances fonctionnent déjà avec votre lien Google existant.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Puis-je résilier quand je veux&nbsp;?<span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Oui. Sans engagement, résiliable à tout moment, en un email. Vos données restent les vôtres et vous sont exportées sur simple demande.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top"><span class="logo" aria-hidden="true">★</span> AvisBoost</a>
+        <p>Le réflexe avis Google des commerces de proximité français. QR code, relances SMS &amp; WhatsApp, réponses IA — dès 29&nbsp;€/mois.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Découvrir</h4>
+        <a href="#fonctionnement">Fonctionnement</a>
+        <a href="#tarifs">Tarifs</a>
+        <a href="#pour-qui">Pour qui</a>
+        <a href="app-demo.html">Démo interactive</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="#essai">Essai gratuit</a>
+        <a href="mailto:contact@avisboost.fr">contact@avisboost.fr</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AvisBoost — Tous droits réservés.</span>
+      <span class="fr">🇫🇷 Pensé et développé en France</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- EmailJS (config réelle) ---------- */
+  var EMAILJS_CONFIG = {
+    serviceId: 'service_cy1ytdb',
+    templateId: 'template_xpo58cv',
+    publicKey: '8Pui4ZEqxW2jRVF7h',
+    site: 'AvisBoost'
+  };
+
+  var form = document.getElementById('trial-form');
+  var errBox = document.getElementById('form-err');
+  var okBox = document.getElementById('form-ok');
+  var btn = document.getElementById('btn-submit');
+
+  /* ---------- FAQ accordéon ---------- */
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    q.addEventListener('click', function(){
+      var open = item.classList.contains('open');
+      faqItems.forEach(function(other){
+        other.classList.remove('open');
+        other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+        other.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!open){
+        item.classList.add('open');
+        q.setAttribute('aria-expanded','true');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ---------- Sélection d'offre depuis les cartes tarifs ---------- */
+  var offerLinks = document.querySelectorAll('[data-offre]');
+  offerLinks.forEach(function(link){
+    link.addEventListener('click', function(){
+      var value = link.getAttribute('data-offre');
+      var radios = document.querySelectorAll('input[name="offre"]');
+      radios.forEach(function(r){
+        r.checked = (r.value === value);
+      });
+    });
+  });
+
+  /* ---------- Chargement du SDK EmailJS à la demande ---------- */
+  function chargerEmailJS(callback){
+    if(window.emailjs){
+      try{ emailjs.init(EMAILJS_CONFIG.publicKey); }catch(e){}
+      callback();
+      return;
+    }
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+    s.onload = function(){
+      emailjs.init(EMAILJS_CONFIG.publicKey);
+      callback();
+    };
+    s.onerror = function(){
+      errBox.textContent = 'Impossible de charger le service d\'envoi. Vérifiez votre connexion internet, puis réessayez.';
+      errBox.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = 'Réserver mon essai gratuit';
+    };
+    document.body.appendChild(s);
+  }
+
+  /* ---------- Validation ---------- */
+  function valider(){
+    var name = form.querySelector('#f-name').value.trim();
+    var email = form.querySelector('#f-email').value.trim();
+    var consent = form.querySelector('#f-consent').checked;
+    var message = '';
+    if(!name){ message = 'Merci d\'indiquer votre nom.'; }
+    else if(!email){ message = 'Merci d\'indiquer votre email.'; }
+    else if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ message = 'Cet email ne semble pas valide. Vérifiez-le, merci.'; }
+    else if(!consent){ message = 'Merci de cocher la case de consentement pour être recontacté(e).'; }
+    if(message){
+      errBox.textContent = message;
+      errBox.classList.add('show');
+      return false;
+    }
+    errBox.classList.remove('show');
+    return true;
+  }
+
+  function montrerErreur(msg){
+    errBox.textContent = msg;
+    errBox.classList.add('show');
+  }
+
+  /* ---------- Soumission ---------- */
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!valider()){ return; }
+
+    var name = form.querySelector('#f-name').value.trim();
+    var email = form.querySelector('#f-email').value.trim();
+    var type = form.querySelector('#f-type').value;
+    var offre = (form.querySelector('input[name="offre"]:checked') || {}).value || 'Je ne sais pas encore';
+    var msg = form.querySelector('#f-msg').value.trim();
+
+    var question = 'Essai gratuit AvisBoost — Offre : ' + offre + ' — Type de commerce : ' + type + '.';
+    if(msg){ question += ' Message : ' + msg; }
+
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours…';
+    errBox.classList.remove('show');
+
+    chargerEmailJS(function(){
+      emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, {
+        site: EMAILJS_CONFIG.site,
+        name: name,
+        email: email,
+        question: question
+      }).then(function(){
+        form.style.display = 'none';
+        okBox.classList.add('show');
+      }).catch(function(){
+        btn.disabled = false;
+        btn.textContent = 'Réserver mon essai gratuit';
+        montrerErreur('L\'envoi a échoué. Merci de réessayer dans un instant, ou écrivez-nous directement à contact@avisboost.fr.');
+      });
+    });
+  });
+
+  /* ---------- Exposé pour les tests ---------- */
+  window.__avisboost = {
+    EMAILJS_CONFIG: EMAILJS_CONFIG,
+    valider: valider,
+    getPayload: function(){
+      return {
+        site: EMAILJS_CONFIG.site,
+        name: form.querySelector('#f-name').value.trim(),
+        email: form.querySelector('#f-email').value.trim(),
+        question: 'Essai gratuit AvisBoost — Offre : ' + ((form.querySelector('input[name="offre"]:checked') || {}).value || 'Je ne sais pas encore') + ' — Type de commerce : ' + form.querySelector('#f-type').value + '.'
+      };
+    }
+  };
+})();
+</script>
+</body>
+</html>

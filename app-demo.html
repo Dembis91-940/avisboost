@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AvisBoost — Démo interactive : QR code, relances SMS & WhatsApp</title>
+<meta name="description" content="Démo interactive AvisBoost : créez le QR code de votre commerce, personnalisez vos relances SMS et WhatsApp, suivez vos avis. Démo réelle, données locales.">
+<meta property="og:title" content="AvisBoost — Démo interactive">
+<meta property="og:description" content="QR code, relances SMS & WhatsApp, suivi des avis. Démo réelle qui tourne dans votre navigateur.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230e7490'/%3E%3Cpath d='M32 12l5.2 11.4 12.3 1.3-9.2 8.3 2.6 12.1L32 39.4l-10.9 5.7 2.6-12.1-9.2-8.3 12.3-1.3z' fill='%23f5efe6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --lagoon:#0e7490;
+    --lagoon-deep:#0b5a70;
+    --lagoon-ink:#0a3e4d;
+    --lagoon-tint:#e3f1f5;
+    --sand:#f5efe6;
+    --sand-deep:#e8dcc9;
+    --sand-line:#e9dfce;
+    --cream:#fbf9f4;
+    --white:#ffffff;
+    --ink:#24404a;
+    --ink-soft:#5c737c;
+    --terra:#cf6a45;
+    --terra-soft:#f7e4da;
+    --green:#1f7a44;
+    --green-soft:#e7f6ec;
+    --radius-lg:26px;
+    --radius-md:18px;
+    --radius-sm:13px;
+    --shadow-sm:0 2px 10px rgba(14,116,144,.06);
+    --shadow-md:0 10px 30px rgba(14,116,144,.10);
+    --shadow-lg:0 22px 55px rgba(11,90,112,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(--ink);
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif;color:var(--lagoon-ink);letter-spacing:-.02em;line-height:1.2}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ---------- Topbar ---------- */
+  .topbar{background:var(--lagoon-ink);color:var(--sand);position:sticky;top:0;z-index:50}
+  .topbar-inner{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.2rem;color:var(--sand)}
+  .brand .logo{width:36px;height:36px;border-radius:11px;background:var(--lagoon);display:grid;place-items:center;font-size:1.05rem}
+  .topbar .right{display:flex;align-items:center;gap:14px}
+  .demo-pill{
+    font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    background:rgba(245,239,230,.14);color:var(--sand);border:1px solid rgba(245,239,230,.25);
+    border-radius:999px;padding:6px 14px;white-space:nowrap;
+  }
+  .back-link{color:rgba(245,239,230,.85);font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}
+  .back-link:hover{color:#fff}
+
+  /* ---------- Bandeau info ---------- */
+  .banner{background:var(--sand);border-bottom:1px solid var(--sand-line)}
+  .banner-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 0;flex-wrap:wrap}
+  .banner p{font-size:.92rem;color:var(--ink-soft);display:flex;align-items:center;gap:10px}
+  .banner p .tag{
+    background:var(--white);border:1px solid var(--sand-deep);color:var(--lagoon-deep);
+    font-size:.72rem;font-weight:700;border-radius:999px;padding:3px 10px;white-space:nowrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.95rem;
+    padding:11px 22px;border-radius:999px;border:2px solid transparent;cursor:pointer;
+    transition:transform .15s ease,box-shadow .15s ease,background .15s ease;
+  }
+  .btn:active{transform:scale(.97)}
+  .btn-lagoon{background:var(--lagoon);color:#fff;box-shadow:0 6px 18px rgba(14,116,144,.25)}
+  .btn-lagoon:hover{background:var(--lagoon-deep);transform:translateY(-1px)}
+  .btn-sand{background:var(--sand);color:var(--lagoon-deep);border-color:var(--sand-deep)}
+  .btn-sand:hover{background:var(--sand-deep)}
+  .btn-ghost{background:transparent;color:var(--ink-soft);border-color:var(--sand-deep)}
+  .btn-ghost:hover{color:var(--ink);background:var(--cream)}
+  .btn-sm{padding:8px 16px;font-size:.85rem}
+  .btn-danger{background:#fdecec;color:#a23b3b;border-color:#f3c9c9}
+  .btn-danger:hover{background:#f7dcdc}
+
+  /* ---------- Stats ---------- */
+  main{padding:36px 0 70px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:30px}
+  .stat-card{
+    background:var(--white);border:1px solid var(--sand-line);border-radius:var(--radius-md);
+    padding:20px 22px;box-shadow:var(--shadow-sm);
+  }
+  .stat-card .label{font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+  .stat-card .value{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:2rem;color:var(--lagoon-ink);letter-spacing:-.02em}
+  .stat-card .value small{font-size:.95rem;color:var(--ink-soft);font-weight:600}
+  .stat-card .hint{font-size:.78rem;color:var(--ink-soft);margin-top:2px}
+  .stat-card.primary{background:var(--lagoon);border-color:var(--lagoon)}
+  .stat-card.primary .label,.stat-card.primary .hint{color:rgba(255,255,255,.85)}
+  .stat-card.primary .value{color:#fff}
+
+  /* ---------- Grille principale ---------- */
+  .app-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:24px;align-items:start}
+  .app-grid > *{min-width:0}
+  .stats > *{min-width:0}
+  .card{
+    background:var(--white);border:1px solid var(--sand-line);border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-sm);padding:28px;margin-bottom:24px;
+  }
+  .card-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .card-num{
+    width:34px;height:34px;border-radius:11px;background:var(--lagoon);color:#fff;flex-shrink:0;
+    display:grid;place-items:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.95rem;
+    box-shadow:0 5px 14px rgba(14,116,144,.25);
+  }
+  .card h2{font-size:1.18rem}
+  .card .sub{font-size:.88rem;color:var(--ink-soft);margin-bottom:20px}
+
+  .field{margin-bottom:14px}
+  .field label{display:block;font-weight:600;font-size:.88rem;margin-bottom:6px;color:var(--ink)}
+  .field input,.field select{
+    width:100%;min-width:0;font:inherit;font-size:.95rem;color:var(--ink);
+    background:var(--cream);border:1.5px solid var(--sand-deep);border-radius:var(--radius-sm);
+    padding:12px 14px;transition:border-color .15s ease,box-shadow .15s ease;
+  }
+  .field input:focus,.field select:focus{
+    outline:none;border-color:var(--lagoon);box-shadow:0 0 0 4px rgba(14,116,144,.13);background:#fff;
+  }
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .form-row{display:flex;gap:10px;align-items:flex-end}
+  .form-row > *{min-width:0}
+  .form-row .field{flex:1;margin-bottom:0}
+  .form-row .btn{flex-shrink:0}
+
+  /* ---------- QR ---------- */
+  .qr-box{text-align:center;padding-top:6px}
+  .qr-frame{
+    display:inline-block;background:#fff;border:1px solid var(--sand-line);border-radius:var(--radius-md);
+    padding:14px;box-shadow:var(--shadow-md);margin-bottom:12px;
+  }
+  .qr-frame img{width:190px;height:190px;border-radius:10px;display:block}
+  .qr-frame .empty{
+    width:190px;height:190px;border-radius:10px;background:var(--cream);
+    display:grid;place-items:center;color:var(--ink-soft);font-size:.85rem;text-align:center;padding:18px;
+  }
+  .qr-url{
+    font-size:.76rem;color:var(--ink-soft);background:var(--cream);border:1px dashed var(--sand-deep);
+    border-radius:10px;padding:9px 12px;word-break:break-all;margin-bottom:14px;
+  }
+  .qr-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .qr-note{font-size:.8rem;color:var(--ink-soft);margin-top:12px}
+
+  /* ---------- Clients ---------- */
+  .client-list{list-style:none}
+  .client-item{
+    border:1px solid var(--sand-line);border-radius:var(--radius-md);background:var(--cream);
+    padding:16px 18px;margin-bottom:12px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .client-item .avatar{
+    width:44px;height:44px;border-radius:14px;background:var(--lagoon-tint);color:var(--lagoon-deep);
+    display:grid;place-items:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.05rem;
+    flex-shrink:0;
+  }
+  .client-item .info{flex:1;min-width:150px}
+  .client-item .name{font-weight:700;color:var(--ink);font-size:.98rem}
+  .client-item .since{font-size:.82rem;color:var(--ink-soft)}
+  .client-item .since b{color:var(--lagoon-deep)}
+  .status{
+    font-size:.72rem;font-weight:700;border-radius:999px;padding:5px 12px;white-space:nowrap;
+  }
+  .status.waiting{background:var(--sand);color:var(--ink-soft);border:1px solid var(--sand-deep)}
+  .status.received{background:var(--green-soft);color:var(--green)}
+  .client-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .empty-state{
+    text-align:center;padding:30px 16px;color:var(--ink-soft);font-size:.92rem;
+    border:2px dashed var(--sand-deep);border-radius:var(--radius-md);background:var(--cream);
+  }
+  .empty-state .big{font-size:2rem;margin-bottom:8px}
+
+  /* ---------- Messages ---------- */
+  .msg-tabs{display:flex;gap:8px;margin-bottom:16px}
+  .msg-tab{
+    flex:1;text-align:center;padding:11px;border-radius:var(--radius-sm);cursor:pointer;
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.9rem;
+    background:var(--cream);border:1.5px solid var(--sand-deep);color:var(--ink-soft);
+    transition:all .15s ease;
+  }
+  .msg-tab.active{background:var(--lagoon-tint);border-color:var(--lagoon);color:var(--lagoon-deep)}
+  .msg-preview{
+    background:var(--cream);border:1px solid var(--sand-line);border-radius:var(--radius-md);
+    padding:20px;margin-bottom:14px;position:relative;min-height:120px;
+  }
+  .msg-preview .channel{
+    position:absolute;top:-11px;left:18px;font-size:.68rem;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;border-radius:999px;padding:4px 12px;
+  }
+  .msg-preview .channel.sms{background:var(--lagoon);color:#fff}
+  .msg-preview .channel.wa{background:#25d366;color:#0b3d1f}
+  .msg-preview .msg-text{font-size:.95rem;color:var(--ink);white-space:pre-wrap;margin-top:6px}
+  .msg-preview .meta{font-size:.76rem;color:var(--ink-soft);margin-top:10px}
+  .msg-actions{display:flex;gap:10px;flex-wrap:wrap}
+  .no-selection{text-align:center;color:var(--ink-soft);padding:26px 10px;font-size:.93rem}
+  .no-selection .big{font-size:2rem;margin-bottom:8px}
+
+  .disclaimer{
+    margin-top:22px;background:var(--terra-soft);border:1px solid #edd3c2;color:#8a4a2e;
+    border-radius:var(--radius-md);padding:15px 18px;font-size:.86rem;
+  }
+  .disclaimer b{font-weight:700}
+
+  footer{background:var(--lagoon-ink);color:rgba(245,239,230,.78);padding:34px 0;font-size:.85rem}
+  .foot-inner{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+  .foot-inner a{color:var(--sand);font-weight:600}
+
+  .toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+    background:var(--lagoon-ink);color:var(--sand);padding:13px 24px;border-radius:999px;
+    font-size:.9rem;font-weight:600;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;
+    transition:all .3s ease;z-index:100;max-width:90vw;text-align:center;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media (max-width:900px){
+    .app-grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:560px){
+    .stats{grid-template-columns:1fr 1fr}
+    .row2{grid-template-columns:1fr}
+    .form-row{flex-direction:column;align-items:stretch}
+    .topbar .right .back-link{display:none}
+    .card{padding:22px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOPBAR ============ -->
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html" aria-label="AvisBoost — retour au site">
+      <span class="logo" aria-hidden="true">★</span> AvisBoost
+    </a>
+    <div class="right">
+      <span class="demo-pill">Démo interactive</span>
+      <a class="back-link" href="index.html">← Retour au site</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ BANDEAU ============ -->
+<div class="banner">
+  <div class="wrap banner-inner">
+    <p>
+      <span class="tag">🖥️ Démo fidèle</span>
+      Vos données restent dans votre navigateur. Aucun SMS réel n'est envoyé depuis cette page.
+    </p>
+    <button class="btn btn-ghost btn-sm" id="btn-reset">Réinitialiser la démo</button>
+  </div>
+</div>
+
+<h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">AvisBoost — Démo interactive : QR code, relances SMS &amp; WhatsApp, suivi des avis</h1>
+
+<main class="wrap">
+
+  <!-- ============ STATS (chiffres réels, calculés localement) ============ -->
+  <section class="stats" aria-label="Vos statistiques">
+    <div class="stat-card primary">
+      <div class="label">⭐ Avis récoltés</div>
+      <div class="value" id="stat-avis">0</div>
+      <div class="hint">Compteur réel, démarre à zéro</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">👥 Clients suivis</div>
+      <div class="value" id="stat-clients">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">⏳ En attente</div>
+      <div class="value" id="stat-attente">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">📈 Taux de réponse</div>
+      <div class="value" id="stat-taux">—</div>
+      <div class="hint">Avis reçus / clients suivis</div>
+    </div>
+  </section>
+
+  <div class="app-grid">
+
+    <!-- ============ ÉTAPE 1 : VOTRE COMMERCE ============ -->
+    <div>
+      <section class="card" aria-labelledby="t1">
+        <div class="card-head">
+          <span class="card-num">1</span>
+          <h2 id="t1">Votre commerce</h2>
+        </div>
+        <p class="sub">Le QR code et vos messages sont personnalisés avec ces informations.</p>
+        <form id="form-biz" novalidate>
+          <div class="field">
+            <label for="biz-name">Nom du commerce <span style="color:var(--terra)">*</span></label>
+            <input type="text" id="biz-name" placeholder="Ex. : Le Bistrot du Port" maxlength="60" required>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="biz-city">Ville</label>
+              <input type="text" id="biz-city" placeholder="Ex. : Bordeaux" maxlength="40">
+            </div>
+            <div class="field">
+              <label for="biz-type">Type de commerce</label>
+              <select id="biz-type">
+                <option value="Restaurant">Restaurant</option>
+                <option value="Coiffeur">Coiffeur / salon</option>
+                <option value="Garage">Garage / auto</option>
+                <option value="Artisan">Artisan</option>
+                <option value="Autre commerce">Autre commerce</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-lagoon" id="btn-biz-save" style="width:100%">Générer mon QR code</button>
+        </form>
+
+        <div class="qr-box" id="qr-box" hidden>
+          <div class="qr-frame" id="qr-frame"></div>
+          <div class="qr-url" id="qr-url"></div>
+          <div class="qr-actions">
+            <button class="btn btn-lagoon btn-sm" id="btn-qr-download">⬇️ Télécharger le QR code</button>
+            <button class="btn btn-sand btn-sm" id="btn-qr-open">Agrandir</button>
+          </div>
+          <p class="qr-note">💡 À imprimer en caisse, sur la table ou en vitrine. Après le branchement officiel de votre fiche Google, ce QR pointera vers votre lien d'avis direct.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ ÉTAPE 2 : CLIENTS ============ -->
+    <div>
+      <section class="card" aria-labelledby="t2">
+        <div class="card-head">
+          <span class="card-num">2</span>
+          <h2 id="t2">Vos clients</h2>
+        </div>
+        <p class="sub">Ajoutez un client de démonstration : le compteur de jours depuis la visite est calculé en temps réel.</p>
+        <form id="form-client" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="cli-prenom">Prénom du client <span style="color:var(--terra)">*</span></label>
+              <input type="text" id="cli-prenom" placeholder="Ex. : Camille" maxlength="30" required>
+            </div>
+            <div class="field">
+              <label for="cli-date">Date de la visite</label>
+              <input type="date" id="cli-date" required>
+            </div>
+            <button type="submit" class="btn btn-lagoon" style="white-space:nowrap">+ Ajouter</button>
+          </div>
+        </form>
+
+        <ul class="client-list" id="client-list" aria-live="polite"></ul>
+        <div class="empty-state" id="client-empty">
+          <div class="big">📋</div>
+          Aucun client pour l'instant.<br>Ajoutez-en un pour voir vos messages de relance personnalisés.
+        </div>
+      </section>
+
+      <!-- ============ ÉTAPE 3 : MESSAGES ============ -->
+      <section class="card" aria-labelledby="t3">
+        <div class="card-head">
+          <span class="card-num">3</span>
+          <h2 id="t3">Messages de relance</h2>
+        </div>
+        <p class="sub">Un aperçu exact des messages personnalisés envoyés par AvisBoost après chaque visite.</p>
+
+        <div class="no-selection" id="msg-empty">
+          <div class="big">💬</div>
+          Sélectionnez un client pour prévisualiser ses messages SMS et WhatsApp.
+        </div>
+
+        <div id="msg-panel" hidden>
+          <div class="msg-tabs" role="tablist">
+            <button class="msg-tab active" id="tab-sms" role="tab" aria-selected="true">💬 SMS</button>
+            <button class="msg-tab" id="tab-wa" role="tab" aria-selected="false">🟢 WhatsApp</button>
+          </div>
+          <div class="msg-preview" id="msg-preview">
+            <span class="channel sms" id="channel-tag">SMS</span>
+            <div class="msg-text" id="msg-text"></div>
+            <div class="meta" id="msg-meta"></div>
+          </div>
+          <div class="msg-actions">
+            <a class="btn btn-lagoon" id="btn-wa-open" href="#" target="_blank" rel="noopener">Ouvrir dans WhatsApp</a>
+            <button class="btn btn-sand" id="btn-copy">📋 Copier le message</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>Démo — ce qui est réel ici :</b> le QR code (généré par l'API publique api.qrserver.com), la personnalisation des messages, le compteur de jours depuis la visite et le suivi de vos avis (chiffres réels, calculés à partir de vos actions, en commençant à zéro). <b>Ce qui nécessite un branchement :</b> l'envoi réel des SMS et WhatsApp (API Meta / fournisseur SMS) et la connexion à l'API Google Business Profile — activés lors de la mise en service et documentés dans le README du projet.
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 AvisBoost — Démo interactive</span>
+    <a href="index.html">← Revenir à la page d'accueil</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  'use strict';
+
+  var STORAGE_KEY = 'avisboost-demo-v1';
+
+  /* ---------- État ---------- */
+  var state = charger() || { business: null, clients: [] };
+  var selectedId = null;
+  var tab = 'sms';
+
+  function charger(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw){ return null; }
+      var data = JSON.parse(raw);
+      if(!data || typeof data !== 'object'){ return null; }
+      return data;
+    }catch(e){ return null; }
+  }
+
+  function sauvegarder(){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }catch(e){ /* stockage indisponible : la démo continue en mémoire */ }
+  }
+
+  function uid(){
+    return 'c' + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+  }
+
+  function joursDepuis(dateISO){
+    if(!dateISO){ return 0; }
+    var visite = new Date(dateISO + 'T12:00:00');
+    if(isNaN(visite.getTime())){ return 0; }
+    var maintenant = new Date();
+    var diff = maintenant.getTime() - visite.getTime();
+    var jours = Math.floor(diff / 86400000);
+    return jours < 0 ? 0 : jours;
+  }
+
+  function libelleJours(n){
+    if(n <= 0){ return 'aujourd\'hui'; }
+    if(n === 1){ return 'il y a 1 jour'; }
+    return 'il y a ' + n + ' jours';
+  }
+
+  function lienGoogle(){
+    var nom = (state.business && state.business.nom) || 'mon commerce';
+    var ville = (state.business && state.business.ville) || '';
+    var q = (nom + ' ' + ville).trim().replace(/\s+/g, '+');
+    return 'https://www.google.com/search?q=' + q;
+  }
+
+  function lienAffiche(){
+    var l = lienGoogle();
+    return l.length > 58 ? l.slice(0,55) + '…' : l;
+  }
+
+  function messageSMS(client){
+    var n = joursDepuis(client.dateVisite);
+    var texte = 'Bonjour ' + client.prenom + ', merci pour votre visite chez ' +
+      (state.business ? state.business.nom : 'notre commerce') + ' ' + libelleJours(n) +
+      ' ! Votre avis Google nous aide énormément. 30 secondes suffisent : ' + lienGoogle() +
+      ' Merci !';
+    return texte;
+  }
+
+  function messageWhatsApp(client){
+    var texte = 'Bonjour ' + client.prenom + ' 👋 Merci pour votre visite chez ' +
+      (state.business ? state.business.nom : 'notre commerce') +
+      ' ! Si vous avez aimé, un petit avis Google ferait toute la différence pour notre équipe : ' +
+      lienGoogle() + ' 🙏 Merci mille fois !';
+    return texte;
+  }
+
+  /* ---------- Rendu ---------- */
+  function el(tag, cls, html){
+    var e = document.createElement(tag);
+    if(cls){ e.className = cls; }
+    if(html !== undefined){ e.innerHTML = html; }
+    return e;
+  }
+
+  function renderBiz(){
+    var form = document.getElementById('form-biz');
+    var box = document.getElementById('qr-box');
+    var b = state.business;
+    if(!b){
+      box.hidden = true;
+      form.hidden = false;
+      return;
+    }
+    document.getElementById('biz-name').value = b.nom;
+    document.getElementById('biz-city').value = b.ville || '';
+    document.getElementById('biz-type').value = b.type || 'Restaurant';
+    form.hidden = true;
+    box.hidden = false;
+
+    var data = encodeURIComponent(lienGoogle());
+    var url = 'https://api.qrserver.com/v1/create-qr-code/?size=380x380&margin=12&data=' + data;
+    var frame = document.getElementById('qr-frame');
+    frame.innerHTML = '';
+    var img = el('img');
+    img.src = url;
+    img.alt = 'QR code AvisBoost pour ' + b.nom;
+    img.width = 190;
+    img.height = 190;
+    img.loading = 'lazy';
+    frame.appendChild(img);
+    document.getElementById('qr-url').textContent = lienAffiche();
+  }
+
+  function renderStats(){
+    var total = state.clients.length;
+    var recus = state.clients.filter(function(c){ return c.statut === 'recu'; }).length;
+    var attente = total - recus;
+    document.getElementById('stat-avis').textContent = recus;
+    document.getElementById('stat-clients').textContent = total;
+    document.getElementById('stat-attente').textContent = attente;
+    document.getElementById('stat-taux').textContent = total === 0 ? '—' : Math.round(recus / total * 100) + ' %';
+  }
+
+  function renderClients(){
+    var list = document.getElementById('client-list');
+    var empty = document.getElementById('client-empty');
+    list.innerHTML = '';
+    if(state.clients.length === 0){
+      empty.style.display = 'block';
+      return;
+    }
+    empty.style.display = 'none';
+    state.clients.forEach(function(client){
+      var li = el('li', 'client-item');
+      li.setAttribute('data-id', client.id);
+
+      var avatar = el('div', 'avatar', (client.prenom || '?').charAt(0).toUpperCase());
+
+      var info = el('div', 'info');
+      var name = el('div', 'name', client.prenom);
+      var since = el('div', 'since');
+      var n = joursDepuis(client.dateVisite);
+      since.innerHTML = 'Visite ' + libelleJours(n) + ' — <b>' + n + ' jour' + (n > 1 ? 's' : '') + '</b> depuis la visite';
+      info.appendChild(name);
+      info.appendChild(since);
+
+      var statut = el('span', 'status ' + (client.statut === 'recu' ? 'received' : 'waiting'),
+        client.statut === 'recu' ? 'Avis reçu ✓' : 'En attente');
+
+      var actions = el('div', 'client-actions');
+      var btnPrev = el('button', 'btn btn-sand btn-sm', '👁️ Aperçu');
+      btnPrev.type = 'button';
+      btnPrev.addEventListener('click', function(){ selectionner(client.id); });
+
+      var btnOk = el('button', 'btn ' + (client.statut === 'recu' ? 'btn-ghost' : 'btn-lagoon') + ' btn-sm',
+        client.statut === 'recu' ? '✓ Déjà répondu' : 'Marquer comme répondu');
+      btnOk.type = 'button';
+      if(client.statut !== 'recu'){
+        btnOk.addEventListener('click', function(){ marquerRepondu(client.id); });
+      }
+
+      var btnDel = el('button', 'btn btn-ghost btn-sm', '✕');
+      btnDel.type = 'button';
+      btnDel.title = 'Retirer ce client';
+      btnDel.setAttribute('aria-label', 'Retirer ' + client.prenom);
+      btnDel.addEventListener('click', function(){ retirerClient(client.id); });
+
+      actions.appendChild(btnPrev);
+      actions.appendChild(btnOk);
+      actions.appendChild(btnDel);
+
+      li.appendChild(avatar);
+      li.appendChild(info);
+      li.appendChild(statut);
+      li.appendChild(actions);
+      list.appendChild(li);
+    });
+  }
+
+  function renderMessages(){
+    var client = null;
+    if(selectedId){
+      client = state.clients.filter(function(c){ return c.id === selectedId; })[0] || null;
+    }
+    var empty = document.getElementById('msg-empty');
+    var panel = document.getElementById('msg-panel');
+    if(!client){
+      empty.style.display = 'block';
+      panel.hidden = true;
+      return;
+    }
+    empty.style.display = 'none';
+    panel.hidden = false;
+
+    var smsTab = document.getElementById('tab-sms');
+    var waTab = document.getElementById('tab-wa');
+    smsTab.classList.toggle('active', tab === 'sms');
+    waTab.classList.toggle('active', tab === 'wa');
+    smsTab.setAttribute('aria-selected', tab === 'sms' ? 'true' : 'false');
+    waTab.setAttribute('aria-selected', tab === 'wa' ? 'true' : 'false');
+
+    var tag = document.getElementById('channel-tag');
+    var text = document.getElementById('msg-text');
+    var meta = document.getElementById('msg-meta');
+    var n = joursDepuis(client.dateVisite);
+
+    if(tab === 'sms'){
+      tag.textContent = 'SMS';
+      tag.className = 'channel sms';
+      var sms = messageSMS(client);
+      text.textContent = sms;
+      meta.textContent = sms.length + ' caractères — dans la version complète, ce SMS part automatiquement ' +
+        (n <= 1 ? 'le jour même' : 'à J+' + n) + ' après la visite (délai paramétrable).';
+    }else{
+      tag.textContent = 'WhatsApp';
+      tag.className = 'channel wa';
+      var wa = messageWhatsApp(client);
+      text.textContent = wa;
+      meta.textContent = 'Message WhatsApp Business — personnalisé avec le prénom, le commerce et le lien Google.';
+    }
+
+    var waLink = document.getElementById('btn-wa-open');
+    waLink.href = 'https://wa.me/?text=' + encodeURIComponent(messageWhatsApp(client));
+    waLink.style.display = tab === 'wa' ? 'inline-flex' : 'none';
+  }
+
+  function renderAll(){
+    renderBiz();
+    renderStats();
+    renderClients();
+    renderMessages();
+  }
+
+  /* ---------- Actions ---------- */
+  function sauverBusiness(nom, ville, type){
+    state.business = { nom: nom, ville: ville, type: type };
+    sauvegarder();
+    renderAll();
+    toast('✅ QR code généré pour « ' + nom + ' »');
+  }
+
+  function ajouterClient(prenom, dateVisite){
+    var client = {
+      id: uid(),
+      prenom: prenom,
+      dateVisite: dateVisite,
+      statut: 'attente',
+      dateAjout: new Date().toISOString()
+    };
+    state.clients.unshift(client);
+    sauvegarder();
+    renderAll();
+    selectionner(client.id);
+    toast('👋 ' + prenom + ' ajouté(e) — visite ' + libelleJours(joursDepuis(dateVisite)));
+  }
+
+  function selectionner(id){
+    selectedId = id;
+    renderMessages();
+    var item = document.querySelector('.client-item[data-id="' + id + '"]');
+    if(item){
+      item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      item.style.boxShadow = '0 0 0 3px rgba(14,116,144,.35)';
+      setTimeout(function(){ item.style.boxShadow = ''; }, 1200);
+    }
+  }
+
+  function marquerRepondu(id){
+    var client = state.clients.filter(function(c){ return c.id === id; })[0];
+    if(!client || client.statut === 'recu'){ return; }
+    client.statut = 'recu';
+    client.dateReponse = new Date().toISOString();
+    sauvegarder();
+    renderAll();
+    var recus = state.clients.filter(function(c){ return c.statut === 'recu'; }).length;
+    toast('⭐ Avis comptabilisé — total réel : ' + recus);
+  }
+
+  function retirerClient(id){
+    state.clients = state.clients.filter(function(c){ return c.id !== id; });
+    if(selectedId === id){ selectedId = null; }
+    sauvegarder();
+    renderAll();
+  }
+
+  function reinitialiser(){
+    if(!confirm('Réinitialiser toute la démo ? Vos clients et votre commerce seront effacés de ce navigateur.')){ return; }
+    try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+    state = { business: null, clients: [] };
+    selectedId = null;
+    document.getElementById('form-biz').reset();
+    document.getElementById('form-client').reset();
+    document.getElementById('cli-date').value = aujourdhuiISO();
+    renderAll();
+    toast('🧹 Démo réinitialisée — compteur remis à zéro');
+  }
+
+  function aujourdhuiISO(){
+    var d = new Date();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var j = String(d.getDate()).padStart(2, '0');
+    return d.getFullYear() + '-' + m + '-' + j;
+  }
+
+  function toast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(function(){ t.classList.remove('show'); }, 2800);
+  }
+
+  /* ---------- Téléchargement QR ---------- */
+  function telechargerQR(){
+    var data = encodeURIComponent(lienGoogle());
+    var url = 'https://api.qrserver.com/v1/create-qr-code/?size=800x800&margin=12&data=' + data;
+    fetch(url)
+      .then(function(r){
+        if(!r.ok){ throw new Error('réponse ' + r.status); }
+        return r.blob();
+      })
+      .then(function(blob){
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'qr-avis-' + (state.business.nom || 'commerce').toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.png';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 400);
+        toast('⬇️ QR code téléchargé, prêt à imprimer');
+      })
+      .catch(function(){
+        window.open(url, '_blank', 'noopener');
+        toast('Téléchargement direct bloqué — ouverture du QR dans un nouvel onglet');
+      });
+  }
+
+  /* ---------- Copie ---------- */
+  function copier(){
+    var client = state.clients.filter(function(c){ return c.id === selectedId; })[0];
+    if(!client){ return; }
+    var texte = tab === 'sms' ? messageSMS(client) : messageWhatsApp(client);
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(texte).then(function(){
+        toast('📋 Message copié');
+      }).catch(function(){ copierFallback(texte); });
+    }else{
+      copierFallback(texte);
+    }
+  }
+  function copierFallback(texte){
+    var ta = document.createElement('textarea');
+    ta.value = texte;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand('copy'); toast('📋 Message copié'); }catch(e){ toast('Copie impossible — sélectionnez le texte à la main'); }
+    ta.remove();
+  }
+
+  /* ---------- Événements ---------- */
+  document.getElementById('form-biz').addEventListener('submit', function(e){
+    e.preventDefault();
+    var nom = document.getElementById('biz-name').value.trim();
+    if(!nom){
+      toast('Merci d\'indiquer le nom de votre commerce');
+      document.getElementById('biz-name').focus();
+      return;
+    }
+    sauverBusiness(nom, document.getElementById('biz-city').value.trim(), document.getElementById('biz-type').value);
+  });
+
+  document.getElementById('form-client').addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!state.business){
+      toast('⚠️ Commencez par créer votre commerce (étape 1)');
+      document.getElementById('biz-name').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    var prenom = document.getElementById('cli-prenom').value.trim();
+    if(!prenom){
+      toast('Merci d\'indiquer le prénom du client');
+      document.getElementById('cli-prenom').focus();
+      return;
+    }
+    var date = document.getElementById('cli-date').value || aujourdhuiISO();
+    ajouterClient(prenom, date);
+    document.getElementById('cli-prenom').value = '';
+    document.getElementById('cli-date').value = aujourdhuiISO();
+  });
+
+  document.getElementById('tab-sms').addEventListener('click', function(){ tab = 'sms'; renderMessages(); });
+  document.getElementById('tab-wa').addEventListener('click', function(){ tab = 'wa'; renderMessages(); });
+  document.getElementById('btn-copy').addEventListener('click', copier);
+  document.getElementById('btn-qr-download').addEventListener('click', telechargerQR);
+  document.getElementById('btn-qr-open').addEventListener('click', function(){
+    var data = encodeURIComponent(lienGoogle());
+    window.open('https://api.qrserver.com/v1/create-qr-code/?size=800x800&margin=12&data=' + data, '_blank', 'noopener');
+  });
+  document.getElementById('btn-reset').addEventListener('click', reinitialiser);
+
+  /* ---------- Init ---------- */
+  document.getElementById('cli-date').value = aujourdhuiISO();
+  renderAll();
+
+  /* ---------- Exposé pour les tests ---------- */
+  window.__demo = {
+    STORAGE_KEY: STORAGE_KEY,
+    state: state,
+    joursDepuis: joursDepuis,
+    messageSMS: messageSMS,
+    messageWhatsApp: messageWhatsApp,
+    ajouterClient: ajouterClient,
+    marquerRepondu: marquerRepondu,
+    retirerClient: retirerClient,
+    sauverBusiness: sauverBusiness,
+    reinitialiser: reinitialiser,
+    renderAll: renderAll,
+    getStats: function(){
+      var total = state.clients.length;
+      var recus = state.clients.filter(function(c){ return c.statut === 'recu'; }).length;
+      return { total: total, recus: recus, attente: total - recus, taux: total === 0 ? null : Math.round(recus / total * 100) };
+    }
+  };
+})();
+</script>
+</body>
+</html>
