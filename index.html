@@ -542,6 +542,23 @@ a{transition:color .3s ease}
 }
 .btn-sand:hover{border-color:#22D3EE88 !important;box-shadow:0 6px 22px rgba(34,211,238,.4)}
 .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-weight:700}
+/* ---------- Correctifs contraste AA (audit 2026-08-20) ---------- */
+/* (a) .brand « AvisBoost » : lagoon-ink sombre sur fond sombre → ink clair ; logo chip explicite */
+.brand{color:#E8F4FF !important}
+.brand .logo{background:#22D3EE !important;color:#04122B !important}
+/* (b) .how-step « 1/2/3 » : blanc sur cyan 1.81 → texte sombre (comme .fr-pill) */
+.how-step{color:#04122B !important}
+/* (c) .featured-flag : blanc sur violet-500 4.23 → fond violet-700 */
+.featured-flag{background:#6D28D9 !important}
+/* (d) .float-star « ⭐ Nouvel avis reçu ! » : blanc sur violet-500 4.23 → fond violet-700 */
+.float-star{background:#6D28D9 !important}
+/* (f) prix/statuts : lagoon-deep #0891B2 sur fonds sombres (2.63) → lagoon clair ; req violet → clair */
+.price-name{color:#E8F4FF !important}
+.demo-row .stat, .mock-msg .msg-head .pill-sms{color:#22D3EE !important}
+.field label .req{color:#C4B5FD !important}
+/* (g) en-tête chatbot : texte ACCENT_TEXT #0f172a sur #0E7490 = 3.33 → blanc 5.36 */
+#cb-panel > div:first-child{color:#fff !important}
+#cb-panel > div:first-child #cb-close{color:#fff !important}
 .float-star,.float-qr{animation:f3floaty 6s ease-in-out infinite}
 .f3-reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
 .f3-reveal.f3-in{opacity:1;transform:translateY(0)}
