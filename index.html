@@ -435,7 +435,121 @@
     html{scroll-behavior:auto}
   }
 </style>
-</head>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="futur-v3">
+/* ============================================================
+   FUTUR V3 — ABYSSAL AURORA — avisboost
+   2026-08-20
+   Overlay design : palette futuriste, glassmorphism, animations.
+   La structure HTML, les outils, EmailJS, chatbots et prix sont
+   intégralement préservés (ce bloc ne fait que styler).
+   ============================================================ */
+:root{
+  --cream: #040A1E;
+  --white: #0E1E3A;
+  --ink: #E8F4FF;
+  --ink-soft: #B9CDE4;
+  --lagoon: #22D3EE;
+  --lagoon-deep: #0891B2;
+  --lagoon-ink: #04122B;
+  --lagoon-mist: rgba(34,211,238,.12);
+  --lagoon-tint: rgba(34,211,238,.24);
+  --sand: #0A1A30;
+  --sand-deep: #0E9F74;
+  --sand-line: rgba(46,230,168,.35);
+  --terra: #8B5CF6;
+  --terra-soft: rgba(139,92,246,.22);
+  --gold: #F5C76F;
+  --shadow-sm: 0 4px 16px rgba(0,0,0,.35);
+  --shadow-md: 0 10px 32px rgba(0,0,0,.45);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,.55);
+  --grad-cta: linear-gradient(135deg,#22D3EE,#8B5CF6);
+}
+html{scroll-behavior:smooth}
+body{
+  background-color:#040A1E !important;
+  background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px) !important;
+  background-size:34px 34px !important;
+  color:#E8F4FF !important;
+  font-family:'Space Grotesk',sans-serif !important;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family:'Sora',sans-serif !important;
+  letter-spacing:-.015em;
+  color:#E8F4FF !important;
+}
+p,li,td,label{color:#B9CDE4}
+a{transition:color .3s ease}
+::selection{background:#22D3EE40;color:#E8F4FF}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#040A1E}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#22D3EE,#8B5CF6);border-radius:8px;border:2px solid #040A1E}
+
+@keyframes f3float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(4vmax,-3vmax) scale(1.07)}66%{transform:translate(-3vmax,3vmax) scale(.96)}}
+@keyframes f3shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes f3pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,211,238,.4)}50%{box-shadow:0 0 0 14px transparent}}
+@keyframes f3gradmove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes f3floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.accent,.eyebrow{
+  background:linear-gradient(90deg,#22D3EE,#2EE6A8,#8B5CF6);
+  background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent !important;
+  animation:f3shimmer 7s linear infinite;
+}
+.pain-card,.us-card,.price-card,.how-card,.who-card,.faq-item,.shop-card,.trial-card,.offer-opt,.compare-inner,.demo-window{
+  background:rgba(10,24,54,.55) !important;
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  border:1px solid rgba(120,200,255,.16) !important;
+  border-radius:18px;
+  box-shadow:0 8px 32px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
+  transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.pain-card,.us-card,.price-card,.how-card,.who-card,.faq-item,.shop-card,.trial-card,.offer-opt,.compare-inner,.demo-window:hover{
+  transform:translateY(-4px);
+  border-color:#22D3EE66 !important;
+  box-shadow:0 12px 42px rgba(34,211,238,.4);
+}
+.nav,nav,header{
+  background:rgba(10,24,54,.55) !important;
+  backdrop-filter:blur(18px) saturate(150%);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  border-bottom:1px solid rgba(120,200,255,.16);
+}
+.hero{
+  background:
+    radial-gradient(900px 420px at 12% -10%, rgba(34,211,238,.18), transparent 60%), radial-gradient(760px 460px at 88% 12%, rgba(139,92,246,.16), transparent 62%), linear-gradient(165deg,#071735 0%,#040A1E 55%,#03102A 100%) !important;
+}
+.btn{letter-spacing:.02em;font-weight:600;transition:all .3s ease;border-radius:12px}
+.btn:hover{transform:translateY(-2px)}
+.btn-lagoon{
+  background:linear-gradient(135deg,#22D3EE,#2EE6A8,#8B5CF6) !important;
+  background-size:200% 200%;
+  animation:f3gradmove 6s ease infinite;
+  box-shadow:0 6px 24px rgba(34,211,238,.4);
+  border:none !important;
+  color:#04101C !important;
+}
+.btn-lagoon:hover{box-shadow:0 10px 36px rgba(34,211,238,.4);transform:translateY(-3px)}
+.btn-sand{
+  background:rgba(255,255,255,.05) !important;
+  border:1px solid rgba(120,200,255,.16) !important;
+  color:#E8F4FF !important;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.btn-sand:hover{border-color:#22D3EE88 !important;box-shadow:0 6px 22px rgba(34,211,238,.4)}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-weight:700}
+.float-star,.float-qr{animation:f3floaty 6s ease-in-out infinite}
+.f3-reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+.f3-reveal.f3-in{opacity:1;transform:translateY(0)}
+#f3-progress{position:fixed;top:0;left:0;height:3px;z-index:9999;background:linear-gradient(90deg,#22D3EE,#2EE6A8,#8B5CF6);width:0;box-shadow:0 0 12px rgba(34,211,238,.4);border-radius:0 3px 3px 0}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+</style></head>
 <body>
 
 <!-- ============ NAV ============ -->
@@ -1098,5 +1212,26 @@
 </script>
 <script src="chatbot-config.js"></script>
 <script src="chatbot.js"></script>
-</body>
+<script id="f3-script">
+(function(){
+  if(document.getElementById('f3-progress'))return;
+  var p=document.createElement('div');p.id='f3-progress';document.body.appendChild(p);
+  var o=document.createElement('div');
+  o.style.cssText='position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden';
+  var orbs=["rgba(34,211,238,.26)","rgba(139,92,246,.22)","rgba(46,230,168,.18)"];
+  var pos=[['-15vmax','-15vmax','55vmax','55vmax','18s','normal'],['-12vmax','30%','45vmax','45vmax','24s','reverse'],['30%','-18vmax','40vmax','40vmax','21s','normal']];
+  for(var i=0;i<3;i++){var d=document.createElement('div');d.style.cssText='position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:f3float '+pos[i][4]+' ease-in-out infinite '+pos[i][5];
+    d.style.left=pos[i][0];d.style.top=pos[i][1];d.style.width=pos[i][2];d.style.height=pos[i][3];
+    d.style.background='radial-gradient(circle,'+orbs[i]+',transparent 60%)';o.appendChild(d);}
+  document.body.appendChild(o);
+  addEventListener('scroll',function(){var h=document.documentElement;var sc=(h.scrollTop||document.body.scrollTop);var m=h.scrollHeight-h.clientHeight;p.style.width=(m>0?(sc/m*100):0)+'%';},{passive:true});
+  var sel=".hero,.pains,.compare,.how,.pricing,.faq,.who,.who2,.demo,.essai";
+  if(!sel)return;
+  var els=document.querySelectorAll(sel);
+  if(!('IntersectionObserver' in window)){for(var i=0;i<els.length;i++)els[i].classList.add('f3-in');return;}
+  for(var i=0;i<els.length;i++)els[i].classList.add('f3-reveal');
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('f3-in');io.unobserve(en.target);}});},{threshold:.1});
+  for(var i=0;i<els.length;i++)io.observe(els[i]);
+})();
+</script></body>
 </html>
