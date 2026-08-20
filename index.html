@@ -200,7 +200,7 @@
     align-self:center;
   }
   .fr-pill{
-    display:inline-flex;align-items:center;gap:8px;background:var(--lagoon);color:#fff;
+    display:inline-flex;align-items:center;gap:8px;background:var(--lagoon);color:#04122B;
     border-radius:999px;padding:10px 20px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;
     font-size:.98rem;margin-top:14px;
   }
@@ -225,14 +225,14 @@
   }
   .how-visual .qr-real{width:112px;height:112px;border-radius:10px;background:#fff;padding:6px;box-shadow:var(--shadow-sm)}
   .mock-msg{
-    width:100%;text-align:left;font-size:.8rem;background:#fff;border:1px solid var(--sand-line);
+    width:100%;text-align:left;font-size:.8rem;background:var(--white);border:1px solid rgba(255,255,255,.08);
     border-radius:12px;padding:12px 14px;color:var(--ink-soft);box-shadow:var(--shadow-sm);
   }
   .mock-msg .msg-head{display:flex;gap:7px;align-items:center;font-weight:600;color:var(--ink);margin-bottom:6px;font-size:.78rem}
   .mock-msg .msg-head .pill-sms{background:var(--lagoon-tint);color:var(--lagoon-deep);border-radius:6px;padding:1px 7px;font-size:.66rem;font-weight:700;letter-spacing:.05em}
   .mock-msg .msg-head .pill-wa{background:#e7f6ec;color:#1f7a44;border-radius:6px;padding:1px 7px;font-size:.66rem;font-weight:700;letter-spacing:.05em}
   .ia-bubble{
-    background:#fff;border:1px solid var(--sand-line);border-radius:14px;padding:13px 15px;
+    background:var(--white);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px 15px;
     font-size:.8rem;color:var(--ink-soft);text-align:left;box-shadow:var(--shadow-sm);width:100%;
   }
   .ia-bubble b{color:var(--lagoon-deep)}
@@ -549,7 +549,8 @@ a{transition:color .3s ease}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-</style></head>
+</style><meta name="twitter:card" content="summary_large_image">
+</head>
 <body>
 
 <!-- ============ NAV ============ -->
@@ -1230,7 +1231,7 @@ a{transition:color .3s ease}
   var els=document.querySelectorAll(sel);
   if(!('IntersectionObserver' in window)){for(var i=0;i<els.length;i++)els[i].classList.add('f3-in');return;}
   for(var i=0;i<els.length;i++)els[i].classList.add('f3-reveal');
-  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('f3-in');io.unobserve(en.target);}});},{threshold:.1});
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting||en.target.getBoundingClientRect().top<innerHeight){en.target.classList.add('f3-in');io.unobserve(en.target);}});},{threshold:.1});
   for(var i=0;i<els.length;i++)io.observe(els[i]);
 })();
 </script></body>
